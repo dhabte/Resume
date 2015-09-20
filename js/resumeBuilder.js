@@ -5,8 +5,8 @@ var bio = {
     "mobile": "650-555-555",
     "email": "John@example.com",
     "twitter": "@demhabt",
-    "github": "demhabt",
-    "blog": "demblog",
+    "github": "dhabte",
+    "blog": "johnBlog",
     "location": "Boston MA"
   },
   "welcomeMessage": "Welcome to My Online Resume",
@@ -33,7 +33,12 @@ bio.display = function(){
     $("#topContacts").append(formattedTwitter);
     $("#topContacts").append(formattedGithub);
     $("#topContacts").append(formattedBlog);
-    $("#topContacts").append(formattedLocation);
+
+    $("#footerContacts").append(formattedEmail);
+    $("#footerContacts").append(formattedTwitter);
+    $("#footerContacts").append(formattedGithub);
+    $("#footerContacts").append(formattedBlog);
+    $("#footerContacts").append(formattedLocation);
 
     var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").append(formattedWelcomeMsg);
@@ -41,18 +46,17 @@ bio.display = function(){
     var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
     $("#header").append(formattedBioPic);
 
-if(bio.skills.length > 0) {
+    if(bio.skills.length > 0) {
 
-  $("#header").append(HTMLskillsStart);
-
-var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-for (var i = 0; i < bio.skills.length; i++) {
-//console.log(bio.skills[i]);
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-  $("#skills").append(formattedSkill);
-}
-}
-}
+    $("#header").append(HTMLskillsStart);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+    for (var i = 0; i < bio.skills.length; i++) {
+    console.log(bio.skills[i]);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+    $("#skills").append(formattedSkill);
+  }
+ }
+};
 bio.display();
 
 var education = {
@@ -98,6 +102,7 @@ var education = {
       "url": "http://example.com"
     }
   ],
+
     "onlineCourses": [
     {
       "title": "JavaScript, jQuery, JSON",
@@ -152,7 +157,7 @@ var work = {
       "title": "Trade Analyst",
       "location": "Boston, MA USA",
       "dates": "June 2005 - Future",
-      "description": "Senior Trade Processor - Process trades of different types according to State Street Practices. Process both DTC and International trades, Futures and Option trades, commercial papers, T-Bills and FX trades as per client instruction making sure that there are no errors and the divisional goal of zero losses is maintained by properly following client specific controls and work procedures. Respond to client requests on time and in a professional manner. Schedule tasks according to their priorities and make sure the paper work is efficintly organized. Participate in the design of work procedures."
+      "description": "Senior Trade Processor - Process trades of different types according to State Street Practices. Process both DTC and International trades, Futures and Option trades, commercial papers, T-Bills and FX trades as per client instruction."
     },
 
     {
@@ -167,7 +172,7 @@ var work = {
       "title": "Tax Reporting Analyst",
       "location": "Canton, MA USA",
       "dates": "2000-2003",
-      "description": "Tax Reporting Analyst - Performed tax project for a leading stock transfer agent that maintains more than 25 million shareholder accounts for 1300 public companies. Performed quarterly tax balancing. Initiated tax projects for 1099DIV, 1099B, 1099INT, and 1042S for the production of tax forms and IRS tax return information tapes to be mailed on time to shareholders and IRS respectively. Designed tools with Excel spreadsheet for the calculation of tax allocation for those with 100% Income and those with STCG, LTCG, ROC and ROP. Processed refund for backup withholding on time. Analized and performed financial adjustment. Developed and implemented process improvement within the tax reporting department."
+      "description": "Tax Reporting Analyst - Initiated tax projects for 1099DIV, 1099B, 1099INT, and 1042S for the production of tax forms and IRS tax return information tapes to be mailed on time to shareholders and IRS respectively. Designed tools with Excel spreadsheet for the calculation of tax allocation for STCG, LTCG, ROC and ROP. Analized and performed financial adjustment. Developed and implemented process improvement within the tax reporting department."
     },
     {
       "employer": "Overall Parking System",
@@ -181,21 +186,21 @@ var work = {
       "title": "Equipement Engineer",
       "location": "Edmonton, AB Canada",
       "dates": "1991-1992",
-      "description": "Prepared equipment specifications reviewed tenders and wrote purchasing recommendations for construction equipments."
+      "description": "Prepared equipment specifications, reviewed tenders, and wrote purchasing recommendations for different kinds of construction equipments."
     },
     {
       "employer": "Freight Transport Corporation",
       "title": "Engineeing Department Head",
       "location": "Addis Ababa, Ethiopia",
       "dates": "1979-1985",
-      "description": "Engineeing Department Head - Designed maintenace operations system that helped reduce vehicle downtime, contain operation costs, extend vehicle life, increase labor productivity and control vendors. Prepared technical specifications reviewed tenders and wrote purchasing recommedations for vehicles and equipments. Developed vehicle and equipment PM schedule to reduce emergency breakdowns. Oversaw modificaton of vehicles. Corresponded with vehicle and equipment manufacturers. Participated in the design of a major maintenance complex. Taught maths and physics to diesel mechanics trainees."
+      "description": "Engineeing Department Head - Designed maintenace system that helped reduce vehicle downtime and operation costs and increase vehicle life and labor productivity. Prepared technical specifications, tenders and wrote purchasing recommedations for vehicles and equipments. Developed vehicle and equipment PM schedule to reduce emergency breakdowns. Taught maths and physics to diesel mechanics trainees."
     }
   ]
 }
 
 work.display = function() {
 for (job in work.jobs) {
-    //create new div for work experiance
+  //create new div for work experiance
   $("#workExperience").append(HTMLworkStart);
 //concatenate employer and title
   var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -211,7 +216,7 @@ for (job in work.jobs) {
 
   var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location)
   $(".work-entry:last").append(formattedLocation);
-  }
+ }
 }
 
 work.display()
@@ -221,18 +226,19 @@ var projects = {
     {
       "title": "Sample project 1",
       "dates": "2013",
-      "description": "Desining of an educational website for teaching of language by using all the available technologies.",
+      "description": "A digital design project, that focuses on Digital logic, sequential building blocks, finite-state machines, FPGAs, timing and synchronization for games, music, digital filters, wireless communications, video, and graphics.",
       "images": [
-        "images/circuit.gif",
-        "images/circuit.gif"
-        ]
+        " http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-111-introductory-digital-systems-laboratory-spring-2006/6-111s06.jpg",
+        "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-111-introductory-digital-systems-laboratory-spring-2006/6-111s06.jpg"
+      ]
     },
     {
       "title": "Sample project 2",
       "dates": 1975,
       "description": "Design, production, and assembling of machines for the production of wind energy to pump underground water  to a city with a population of 20,000.",
       "images": [
-        ""
+        "http://energy.gov/sites/prod/files/styles/borealis_photo_thumb_respondsmall/public/ir_wind_how_turbine_works_2.jpg?itok=NHI1D67r",
+        "http://energy.gov/sites/prod/files/styles/borealis_photo_thumb_respondsmall/public/ir_wind_how_turbine_works_2.jpg?itok=NHI1D67r"
       ]
     }
   ]
@@ -258,7 +264,7 @@ projects.display = function(){
       }
     }
   }
-};
+}
 projects.display();
 
 $("#mapDiv").append(googleMap);
@@ -275,7 +281,7 @@ $("#mapDiv").append(googleMap);
 
   $("#main").append(internationalizeButton);
 
-/*function locationizer(work_obj) {
+function locationizer(work_obj) {
   var locationArray = [];
 
   for (var job in work_obj.jobs) {
@@ -286,7 +292,7 @@ $("#mapDiv").append(googleMap);
   return locationArray;
 
 }
-  console.log(locationizer(work));*/
+  console.log(locationizer(work));
 
   //(document).click is a jQuery event handler, in this case when clicked on the page it gives the position of x & y in pixel.
 /*$(document).click(function(loc){
